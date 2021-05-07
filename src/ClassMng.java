@@ -1,11 +1,8 @@
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class ClassMng {
-
+    Scanner sc = new Scanner(System.in);
     List<Classroom> classroomList = new ArrayList<>();
 
     // Thêm lớp học
@@ -63,7 +60,25 @@ public class ClassMng {
     public void removeClassByName(String name) {
         int index = findClassByName(name);
         if (index != -1) {
-            classroomList.remove(index);
+            System.out.println("Bạn có chắc muốn xóa không ?");
+            System.out.println("1. Có, chắc cmn chắn ");
+            System.out.println("2. Thôi, đùa đấy !");
+            String answer;
+            do{
+                answer = sc.nextLine();
+                if(answer.equals("1")){
+                    classroomList.remove(index);
+                    System.err.println("Xóa rồi nhé !");
+                    break;
+                }
+                else if(answer.equals("2")){
+                    System.err.println("Vậy hoy, hem xóa nữa !");
+                    break;
+                }
+                else {
+                    System.err.println("Nhập lại bạn êi !");
+                }
+            }while(true);
         }
         saveClassInfo();
     }
@@ -119,8 +134,8 @@ public class ClassMng {
     public void showTeacherByNameOrId(String input) {
         int index = findTeacherByNameOrId(input);
         if (index != -1) {
-            System.out.printf("%-25s%-18s%-20s%-17s%-25s%-28s%-21s%-19s","Họ tên","Giới tính","Ngày sinh","Quê quán",
-                    "Mã giảng viên","Lương/giờ","Số giờ dạy","Thực lĩnh");
+            System.out.printf("%-25s%-18s%-20s%-17s%-25s%-28s%-21s%-19s", "Họ tên", "Giới tính", "Ngày sinh", "Quê quán",
+                    "Mã giảng viên", "Lương/giờ", "Số giờ dạy", "Thực lĩnh");
             System.out.println();
             classroomList.get(index).getTeacher().showTeacherInfo();
         }
@@ -138,31 +153,31 @@ public class ClassMng {
     }
 
     // Sinh viên
-
     // Thêm sinh viên vào lớp
-    public void addStudent(String className){
+    public void addStudent(String className) {
         readClassInfo();
         boolean isFind = false;
-        for(Classroom classroom : classroomList){
-            if(classroom.getClassName().equalsIgnoreCase(className)){
+        for (Classroom classroom : classroomList) {
+            if (classroom.getClassName().equalsIgnoreCase(className)) {
                 Student student = new Student();
                 student.inputStudentInfo(classroomList);
                 classroom.getStudentList().add(student);
                 isFind = true;
             }
         }
-        if(!isFind){
+        if (!isFind) {
             System.err.println("Không tìm thấy tên lớp phù hợp !");
         }
         saveClassInfo();
     }
+
     // Tìm kiếm sinh viên
     public int[] findStudent(String input) {
         int[] pos = {-1, -1};
         for (int i = 0; i < classroomList.size(); i++) {
             for (int j = 0; j < classroomList.get(i).getStudentList().size(); j++) {
                 Student student = classroomList.get(i).getStudentList().get(j);
-                if (findStudentByInput(input, student)){
+                if (findStudentByInput(input, student)) {
                     pos[0] = i;
                     pos[1] = j;
                 }
@@ -181,17 +196,17 @@ public class ClassMng {
         if (pos[0] != -1 && pos[1] != -1) {
             Student student = classroomList.get(pos[0]).getStudentList().get(pos[1]);
             if (findStudentByInput(input, student)) {
-                System.out.printf("%-25s%-18s%-20s%-17s%-35s%-22s%-25s%-27s%-29s%-25s","Họ tên","Giới tính","Ngày sinh","Quê quán",
-                        "Mã sinh viên","Email","Số điện thoại","Điểm lý thuyết","Điểm thực hành","Điểm trung bình");
+                System.out.printf("%-25s%-18s%-20s%-17s%-35s%-22s%-25s%-27s%-29s%-25s", "Họ tên", "Giới tính", "Ngày sinh", "Quê quán",
+                        "Mã sinh viên", "Email", "Số điện thoại", "Điểm lý thuyết", "Điểm thực hành", "Điểm trung bình");
                 System.out.println();
                 student.showStudentInfo();
             }
         }
     }
+
     // Sửa thông tin sinh viên bằng tên hoặc mã sinh viên, sđt, email
     public void editStudentByNameOrIdOrPhoneOrEmail(String input) {
         readClassInfo();
-        showClassInfo();
         int[] pos = findStudent(input);
         if (pos[0] != -1 && pos[1] != -1) {
             Student student = classroomList.get(pos[0]).getStudentList().get(pos[1]);
@@ -214,8 +229,27 @@ public class ClassMng {
         int[] pos = findStudent(input);
         if (pos[0] != -1 && pos[1] != -1) {
             Student student = classroomList.get(pos[0]).getStudentList().get(pos[1]);
-            if (findStudentByInput(input,student)) {
-                classroomList.get(pos[0]).getStudentList().remove(pos[1]);
+            if (findStudentByInput(input, student)) {
+                showStudentByNameOrIdOrPhoneOrEmail(input);
+                System.out.println("Bạn có chắc muốn xóa không ?");
+                System.out.println("1. Có, chắc cmn chắn");
+                System.out.println("2. À mà thôi, đùa đấy");
+                String answer;
+                do {
+                    answer = sc.nextLine();
+                    if (answer.equals("1")) {
+                        classroomList.get(pos[0]).getStudentList().remove(pos[1]);
+                        System.err.println("Xóa rồi nhóe !");
+                        break;
+                    }
+                    else if (answer.equals("2")) {
+                        System.err.println("Vậy hoy, hem xóa nữa");
+                        break;
+                    }
+                    else {
+                        System.err.println("Nhập lại bạn êi ");
+                    }
+                }while (true);
             }
         }
         saveClassInfo();

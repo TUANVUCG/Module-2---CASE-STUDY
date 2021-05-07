@@ -134,7 +134,7 @@ public class Student extends Person {
                     }
                 }
             }
-            String regex = "\\d{10,11}$";
+            String regex = "^[(09)(03)]\\d{9,10}$";
             Pattern pattern = Pattern.compile(regex);
             Matcher matcher = pattern.matcher(phoneNumber);
             if (matcher.find()) {

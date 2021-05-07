@@ -78,6 +78,7 @@ public class Main {
                 case "5":
                     System.out.println("Nhập tên, mã SV, sđt hoặc email cần sửa : ");
                     String editStu = sc.nextLine();
+                    classMng.showStudentByNameOrIdOrPhoneOrEmail(editStu);
                     classMng.editStudentByNameOrIdOrPhoneOrEmail(editStu);
                     break;
                 case "6":
@@ -161,6 +162,7 @@ public class Main {
                 case "12":
                     System.out.println("Nhập tên, mã SV, sđt hoặc email cần sửa : ");
                     String editStu = sc.nextLine();
+                    classMng.showStudentByNameOrIdOrPhoneOrEmail(editStu);
                     classMng.editStudentByNameOrIdOrPhoneOrEmail(editStu);
                     break;
                 case "13":
