@@ -103,8 +103,8 @@ public class Classroom implements Serializable {
 
 
         System.out.println("THÔNG TIN SINH VIÊN : ");
-        System.out.printf("%-25s%-18s%-20s%-17s%-35s%-22s%-25s%-27s%-29s%-25s","Họ tên","Giới tính","Ngày sinh","Quê quán",
-                "Mã sinh viên","Email","Số điện thoại","Điểm lý thuyết","Điểm thực hành","Điểm trung bình");
+        System.out.printf("%-25s%-18s%-20s%-17s%-35s%-22s%-25s%-27s%-29s%-25s%-25s","Họ tên","Giới tính","Ngày sinh","Quê quán",
+                "Mã sinh viên","Email","Số điện thoại","Điểm lý thuyết","Điểm thực hành","Điểm trung bình","Phân loại");
         System.out.println();
         for (int i = 0; i < studentList.size(); i++) {
             System.out.println(studentList.get(i));

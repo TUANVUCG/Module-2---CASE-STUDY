@@ -196,8 +196,7 @@ public class ClassMng {
         if (pos[0] != -1 && pos[1] != -1) {
             Student student = classroomList.get(pos[0]).getStudentList().get(pos[1]);
             if (findStudentByInput(input, student)) {
-                System.out.printf("%-25s%-18s%-20s%-17s%-35s%-22s%-25s%-27s%-29s%-25s", "Họ tên", "Giới tính", "Ngày sinh", "Quê quán",
-                        "Mã sinh viên", "Email", "Số điện thoại", "Điểm lý thuyết", "Điểm thực hành", "Điểm trung bình");
+                showStudentTitle();
                 System.out.println();
                 student.showStudentInfo();
             }
@@ -238,8 +237,25 @@ public class ClassMng {
                 do {
                     answer = sc.nextLine();
                     if (answer.equals("1")) {
-                        classroomList.get(pos[0]).getStudentList().remove(pos[1]);
-                        System.err.println("Xóa rồi nhóe !");
+                        System.out.println("Xóa thật đấy nhé, không đùa đâu ?");
+                        System.out.println("1. Biết rồi, khổ lắm, nói mãi");
+                        System.out.println("2. Nước đi này mình đi sai, cho mình đi lại nhé");
+                        String ans;
+                        do{
+                            ans = sc.nextLine();
+                            if(ans.equals("1")){
+                                classroomList.get(pos[0]).getStudentList().remove(pos[1]);
+                                System.err.println("Xóa rồi nhóe !");
+                                break;
+                            }
+                            else if (ans.equals("2")) {
+                                System.err.println("Vậy hoy, hem xóa nữa");
+                                break;
+                            }
+                            else {
+                                System.err.println("Nhập lại bạn êi ");
+                            }
+                        }while (true);
                         break;
                     }
                     else if (answer.equals("2")) {
@@ -272,6 +288,64 @@ public class ClassMng {
             });
         }
         saveClassInfo();
+    }
+
+    // Hiển thị danh sách sinh viên của tất cả các lớp
+    public void showAllStudentList(){
+        readClassInfo();
+        for(Classroom classroom : classroomList){
+            System.out.println("TÊN LỚP : "+ classroom.getClassName());
+            System.out.println("----------------");
+            showStudentTitle();
+            for(Student student : classroom.getStudentList()){
+                student.showStudentInfo();
+            }
+            System.out.println("===============================================");
+        }
+    }
+
+
+    // Hiển thị danh sách sinh viên bằng cách nhập tên lớp
+    public void showStudentListByClassName(String name){
+        readClassInfo();
+        boolean isFind = false;
+        for(Classroom classroom : classroomList){
+            if(classroom.getClassName().equalsIgnoreCase(name)){
+                System.out.println("TÊN LỚP : "+ classroom.getClassName());
+                System.out.println("----------------");
+                showStudentTitle();
+                for(Student student : classroom.getStudentList()){
+                    student.showStudentInfo();
+                    isFind = true;
+                }
+            }
+        }
+        if(!isFind){
+            System.err.println("Không thấy tên lớp phù hợp !");
+        }
+    }
+
+    // Hiển thị sinh viên được học bổng
+    public void showStudentHasScholarShip(){
+        readClassInfo();
+        for(Classroom classroom : classroomList){
+            for(Student student : classroom.getStudentList()){
+                if(student.classifyStudent().equals("ĐẠT HỌC BỔNG")){
+                    System.out.println("TÊN LỚP : "+ classroom.getClassName());
+                    System.out.println("--------------------");
+                    showStudentTitle();
+                    student.showStudentInfo();
+                }
+            }
+        }
+    }
+
+
+    private void showStudentTitle() {
+        System.out.println("THÔNG TIN SINH VIÊN : ");
+        System.out.printf("%-25s%-18s%-20s%-17s%-35s%-22s%-25s%-27s%-29s%-25s%-25s", "Họ tên", "Giới tính", "Ngày sinh", "Quê quán",
+                "Mã sinh viên", "Email", "Số điện thoại", "Điểm lý thuyết", "Điểm thực hành", "Điểm trung bình","Phân loại");
+        System.out.println();
     }
 
     // Hiển thị sinh viên điểm cao nhất và thấp nhất lớp

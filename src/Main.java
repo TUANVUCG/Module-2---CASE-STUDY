@@ -19,24 +19,26 @@ public class Main {
             choose = sc.nextLine();
             switch (choose) {
                 case "1":
-                    classMng.showClassInfo();
+                    classMng.showAllStudentList();
                     break;
                 case "2":
-                    classMng.showClassInfo();
-                    System.out.println("Nhập tên hoặc mã giảng viên cần tìm ");
-                    String findTeacher = sc.nextLine();
-                    classMng.showTeacherByNameOrId(findTeacher);
+                    System.out.println("Nhập tên lớp :");
+                    String name = sc.nextLine();
+                    classMng.showStudentListByClassName(name);
                     break;
                 case "3":
+                    classMng.showStudentHasScholarShip();
+                    break;
+                case "4":
                     System.out.println("Nhập tên, mã SV, sđt hoặc email cần tìm : ");
                     String findStu = sc.nextLine();
                     classMng.showStudentByNameOrIdOrPhoneOrEmail(findStu);
                     break;
-                case "4":
+                case "5":
                     classMng.sortStudentByGPA();
                     classMng.showClassInfo();
                     break;
-                case "5":
+                case "6":
                     showFirstMenu(classMng);
                     break;
                 case "0":
@@ -91,6 +93,9 @@ public class Main {
                     classMng.showClassInfo();
                     break;
                 case "8":
+                    classMng.showStudentHasScholarShip();
+                    break;
+                case "9":
                     showFirstMenu(classMng);
                     break;
                 case "0":
@@ -175,6 +180,9 @@ public class Main {
                     classMng.showClassInfo();
                     break;
                 case "15":
+                    classMng.showStudentHasScholarShip();
+                    break;
+                case "16":
                     showFirstMenu(classMng);
                     break;
                 case "0":
@@ -189,10 +197,11 @@ public class Main {
 
     private static void showStudentMenu() {
         System.out.println("1. Hiển thị thông tin các lớp học");
-        System.out.println("2. Tìm giảng viên ");
-        System.out.println("3. Tìm sinh viên");
-        System.out.println("4. Sắp xếp sinh viên theo điểm từ cao đến thấp");
-        System.out.println("5. Quay lại menu chính ");
+        System.out.println("2. Hiển thị danh sách sinh viên theo tên lớp");
+        System.out.println("3. Hiển thị danh sách sinh viên đạt học bổng");
+        System.out.println("4. Tìm sinh viên");
+        System.out.println("5. Sắp xếp sinh viên theo điểm từ cao đến thấp");
+        System.out.println("6. Quay lại menu chính ");
         System.out.println("0. Thoát chương trình");
     }
 
@@ -204,7 +213,8 @@ public class Main {
         System.out.println("5. Sửa thông tin sinh viên");
         System.out.println("6. Xóa thông tin sinh viên");
         System.out.println("7. Sắp xếp sinh viên theo điểm từ cao đến thấp");
-        System.out.println("8. Quay lại menu chính ");
+        System.out.println("8. Hiển thị danh sách sinh viên đạt học bổng ");
+        System.out.println("9. Quay lại menu chính ");
         System.out.println("0. Thoát chương trình");
     }
 
@@ -223,7 +233,8 @@ public class Main {
         System.out.println("12. Sửa thông tin sinh viên");
         System.out.println("13. Xóa thông tin sinh viên");
         System.out.println("14. Sắp xếp sinh viên theo điểm từ thấp đến cao");
-        System.out.println("15. Quay lại menu chính ");
+        System.out.println("15. Hiển thị danh sách sinh viên đạt học bổng ");
+        System.out.println("16. Quay lại menu chính ");
         System.out.println("0. Thoát chương trình");
     }
 

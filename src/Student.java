@@ -177,9 +177,27 @@ public class Student extends Person {
         return (theoryMark + (practiceMark * 2)) / 3;
     }
 
+    public String classifyStudent() {
+        String classify = null;
+        double gpa = findGPA();
+        double the = theoryMark;
+        double pra = practiceMark;
+        if (gpa >= 8.5 && the >= 8 && pra >= 8) {
+            classify = "ĐẠT HỌC BỔNG";
+        } else if (gpa >= 8.5 && (the < 8 || pra < 8)) {
+            classify = "Giỏi";
+        } else if (gpa >= 7 && gpa < 8.5) {
+            classify = "Khá";
+        } else if (gpa >= 5.5 && gpa < 7) {
+            classify = "Trung bình";
+        } else if (gpa < 5.5) {
+            classify = "Toạch !";
+        }
+        return classify;
+    }
 
     @Override
     public String toString() {
-        return super.toString() + String.format("%-25s%-30s%-25s%-25.1f%-25.1f%-25.1f", studentId, email, phoneNumber, theoryMark, practiceMark, findGPA());
+        return super.toString() + String.format("%-25s%-30s%-25s%-25.1f%-25.1f%-18.1f%-24s", studentId, email, phoneNumber, theoryMark, practiceMark, findGPA(), classifyStudent());
     }
 }
