@@ -25,7 +25,6 @@ public class ClassMng {
         }
     }
 
-
     // Tìm thông tin lớp học bằng tên lớp
     public int findClassByName(String name) {
         int index = -1;
@@ -138,7 +137,6 @@ public class ClassMng {
     }
 
     // Sinh viên
-
     // Thêm sinh viên vào lớp
     public void addStudent(String className){
         readClassInfo();

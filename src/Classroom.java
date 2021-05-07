@@ -38,7 +38,6 @@ public class Classroom implements Serializable {
     public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
     }
-
     public List<Student> getStudentList() {
         return studentList;
     }
@@ -46,7 +45,6 @@ public class Classroom implements Serializable {
     public void setStudentList(List<Student> studentList) {
         this.studentList = studentList;
     }
-
 
     public void inputClassInfo(List<Classroom> classroomList) {
         Scanner sc = new Scanner(System.in);
@@ -114,12 +112,4 @@ public class Classroom implements Serializable {
         System.out.println("-------------------");
     }
 
-    @Override
-    public String toString() {
-        return "Classroom{" +
-                "className='" + className + '\'' +
-                ", teacher=" + teacher +
-                ", studentList=" + studentList +
-                '}';
-    }
 }

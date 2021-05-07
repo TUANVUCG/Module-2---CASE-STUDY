@@ -169,7 +169,6 @@ public class Student extends Person {
         }
     }
 
-
     public void showStudentInfo() {
         System.out.println(this.toString());
     }
@@ -177,7 +176,6 @@ public class Student extends Person {
     public double findGPA() {
         return (theoryMark + (practiceMark * 2)) / 3;
     }
-
 
     @Override
     public String toString() {

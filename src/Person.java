@@ -95,7 +95,6 @@ public class Person implements Serializable {
     public void showPersonInfo() {
         System.out.println(toString());
     }
-
     @Override
     public String toString() {
         return String.format("%-30s%-12s%-20s%-20s", name, gender, birthOfDate, address);

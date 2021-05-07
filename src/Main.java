@@ -12,6 +12,7 @@ public class Main {
 
         showFirstMenu(classMng);
     }
+
     private static void workLikeAStudent(ClassMng classMng) {
         String choose;
         do {
