@@ -327,7 +327,7 @@ public class Main {
     }
 
     private static void choice() {
-        System.out.println("Chức vụ của bạn là gì ?");
+        System.out.println("Bạn là ai trong cuộc đời này ?");
         System.out.println("1. Sinh viên quèn");
         System.out.println("2. Giảng viên");
         System.out.println("3. Trùm");
