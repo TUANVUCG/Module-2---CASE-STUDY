@@ -12,6 +12,7 @@ public class Main {
 
         showFirstMenu(classMng);
     }
+
     private static void workLikeAStudent(ClassMng classMng) {
         String choose;
         do {
@@ -22,33 +23,29 @@ public class Main {
                     classMng.showAllStudentList();
                     break;
                 case "2":
-                    System.out.println("Nhập tên lớp :");
-                    String name = sc.nextLine();
-                    classMng.showStudentListByClassName(name);
+                    showStudentList(classMng);
                     break;
                 case "3":
                     classMng.showStudentHasScholarShip();
                     break;
                 case "4":
-                    System.out.println("Nhập tên, mã SV, sđt hoặc email cần tìm : ");
-                    String findStu = sc.nextLine();
-                    classMng.showStudentByNameOrIdOrPhoneOrEmail(findStu);
+                    findStudent(classMng);
                     break;
                 case "5":
-                    classMng.sortStudentByGPA();
-                    classMng.showClassInfo();
+                    sortStudentByGpa(classMng);
                     break;
                 case "6":
                     showFirstMenu(classMng);
                     break;
                 case "0":
                     System.out.println("GOODBYE !!!");
+                    System.exit(0);
                     break;
                 default:
                     System.err.println("Nhập sai !");
                     break;
             }
-        } while (!(choose.equals("0")));
+        } while (true);
     }
 
     private static void workLikeATeacher(ClassMng classMng) {
@@ -61,36 +58,22 @@ public class Main {
                     classMng.showClassInfo();
                     break;
                 case "2":
-                    classMng.showClassInfo();
-                    System.out.println("Nhập tên hoặc mã giảng viên cần tìm ");
-                    String findTeacher = sc.nextLine();
-                    classMng.showTeacherByNameOrId(findTeacher);
+                    findTeacher(classMng);
                     break;
                 case "3":
-                    classMng.showClassInfo();
-                    System.out.println("Nhập tên lớp học muốn thêm sinh viên : ");
-                    String className = sc.nextLine();
-                    classMng.addStudent(className);
+                    addStudent(classMng);
                     break;
                 case "4":
-                    System.out.println("Nhập tên, mã SV, sđt hoặc email cần tìm : ");
-                    String findStu = sc.nextLine();
-                    classMng.showStudentByNameOrIdOrPhoneOrEmail(findStu);
+                    findStudent(classMng);
                     break;
                 case "5":
-                    System.out.println("Nhập tên, mã SV, sđt hoặc email cần sửa : ");
-                    String editStu = sc.nextLine();
-                    classMng.showStudentByNameOrIdOrPhoneOrEmail(editStu);
-                    classMng.editStudentByNameOrIdOrPhoneOrEmail(editStu);
+                    editStudent(classMng);
                     break;
                 case "6":
-                    System.out.println("Nhập tên, mã SV, sđt hoặc email cần xóa : ");
-                    String removeStu = sc.nextLine();
-                    classMng.removeStudentByNameOrIdOrPhoneOrEmail(removeStu);
+                    removeStudent(classMng);
                     break;
                 case "7":
-                    classMng.sortStudentByGPA();
-                    classMng.showClassInfo();
+                    sortStudentByGpa(classMng);
                     break;
                 case "8":
                     classMng.showStudentHasScholarShip();
@@ -100,12 +83,13 @@ public class Main {
                     break;
                 case "0":
                     System.out.println("GOODBYE !!!");
+                    System.exit(0);
                     break;
                 default:
                     System.err.println("Nhập sai !");
                     break;
             }
-        } while (!(choose.equals("0")));
+        } while (true);
     }
 
     private static void workLikeABoss(ClassMng classMng) {
@@ -121,63 +105,40 @@ public class Main {
                     classMng.showClassInfo();
                     break;
                 case "3":
-                    System.out.println("Nhập tên lớp cần tìm");
-                    String find = sc.nextLine();
-                    classMng.showClassByName(find);
+                    findClass(classMng);
                     break;
                 case "4":
-                    classMng.showClassInfo();
-                    System.out.println("Nhập tên lớp cần sửa");
-                    String edit = sc.nextLine();
-                    classMng.editClassByName(edit);
+                    editClass(classMng);
                     break;
                 case "5":
-                    System.out.println("Nhập tên lớp cần xóa");
-                    String remove = sc.nextLine();
-                    classMng.editClassByName(remove);
+                    removeClass(classMng);
                     break;
                 case "6":
-                    classMng.saveClassInfo();
-                    System.out.println("Đã lưu !");
+                    saveClass(classMng);
                     break;
                 case "7":
-                    classMng.readClassInfo();
-                    classMng.showClassInfo();
+                    readClass(classMng);
                     break;
                 case "8":
-                    System.out.println("Nhập tên hoặc mã giảng viên cần tìm ");
-                    String findTeacher = sc.nextLine();
-                    classMng.showTeacherByNameOrId(findTeacher);
+                    findTeacher(classMng);
                     break;
                 case "9":
-                    System.out.println("Nhập tên hoặc mã giảng viên cần sửa ");
-                    String editTeacher = sc.nextLine();
-                    classMng.editTeacherByNameOrId(editTeacher);
+                    removeTeacher(classMng);
                     break;
                 case "10":
-                    System.out.println("Nhập tên lớp học muốn thêm sinh viên : ");
-                    String className = sc.nextLine();
-                    classMng.addStudent(className);
+                    addStudent(classMng);
                     break;
                 case "11":
-                    System.out.println("Nhập tên, mã SV, sđt hoặc email cần tìm : ");
-                    String findStu = sc.nextLine();
-                    classMng.showStudentByNameOrIdOrPhoneOrEmail(findStu);
+                    findStudent(classMng);
                     break;
                 case "12":
-                    System.out.println("Nhập tên, mã SV, sđt hoặc email cần sửa : ");
-                    String editStu = sc.nextLine();
-                    classMng.showStudentByNameOrIdOrPhoneOrEmail(editStu);
-                    classMng.editStudentByNameOrIdOrPhoneOrEmail(editStu);
+                    editStudent(classMng);
                     break;
                 case "13":
-                    System.out.println("Nhập tên, mã SV, sđt hoặc email cần xóa : ");
-                    String removeStu = sc.nextLine();
-                    classMng.removeStudentByNameOrIdOrPhoneOrEmail(removeStu);
+                    removeStudent(classMng);
                     break;
                 case "14":
-                    classMng.sortStudentByGPA();
-                    classMng.showClassInfo();
+                    sortStudentByGpa(classMng);
                     break;
                 case "15":
                     classMng.showStudentHasScholarShip();
@@ -187,12 +148,92 @@ public class Main {
                     break;
                 case "0":
                     System.out.println("GOODBYE !!!");
+                    System.exit(0);
                     break;
                 default:
                     System.err.println("Nhập sai !");
                     break;
             }
-        } while (!(choose.equals("0")));
+        } while (true);
+    }
+
+    private static void findStudent(ClassMng classMng) {
+        System.out.println("Nhập tên, mã SV, sđt hoặc email cần tìm : ");
+        String findStu = sc.nextLine();
+        classMng.showStudentByNameOrIdOrPhoneOrEmail(findStu);
+    }
+
+    private static void showStudentList(ClassMng classMng) {
+        System.out.println("Nhập tên lớp :");
+        String name = sc.nextLine();
+        classMng.showStudentListByClassName(name);
+    }
+
+    private static void sortStudentByGpa(ClassMng classMng) {
+        classMng.sortStudentByGPA();
+        classMng.showClassInfo();
+    }
+
+    private static void editStudent(ClassMng classMng) {
+        System.out.println("Nhập tên, mã SV, sđt hoặc email cần sửa : ");
+        String editStu = sc.nextLine();
+        classMng.showStudentByNameOrIdOrPhoneOrEmail(editStu);
+        classMng.editStudentByNameOrIdOrPhoneOrEmail(editStu);
+    }
+
+    private static void addStudent(ClassMng classMng) {
+        classMng.showClassInfo();
+        System.out.println("Nhập tên lớp học muốn thêm sinh viên : ");
+        String className = sc.nextLine();
+        classMng.addStudent(className);
+    }
+
+    private static void findTeacher(ClassMng classMng) {
+        classMng.showClassInfo();
+        System.out.println("Nhập tên hoặc mã giảng viên cần tìm ");
+        String findTeacher = sc.nextLine();
+        classMng.showTeacherByNameOrId(findTeacher);
+    }
+
+    private static void removeStudent(ClassMng classMng) {
+        System.out.println("Nhập tên, mã SV, sđt hoặc email cần xóa : ");
+        String removeStu = sc.nextLine();
+        classMng.removeStudentByNameOrIdOrPhoneOrEmail(removeStu);
+    }
+
+    private static void removeTeacher(ClassMng classMng) {
+        System.out.println("Nhập tên hoặc mã giảng viên cần sửa ");
+        String editTeacher = sc.nextLine();
+        classMng.editTeacherByNameOrId(editTeacher);
+    }
+
+    private static void readClass(ClassMng classMng) {
+        classMng.readClassInfo();
+        classMng.showClassInfo();
+    }
+
+    private static void saveClass(ClassMng classMng) {
+        classMng.saveClassInfo();
+        System.out.println("Đã lưu !");
+    }
+
+    private static void removeClass(ClassMng classMng) {
+        System.out.println("Nhập tên lớp cần xóa");
+        String remove = sc.nextLine();
+        classMng.editClassByName(remove);
+    }
+
+    private static void editClass(ClassMng classMng) {
+        classMng.showClassInfo();
+        System.out.println("Nhập tên lớp cần sửa");
+        String edit = sc.nextLine();
+        classMng.editClassByName(edit);
+    }
+
+    private static void findClass(ClassMng classMng) {
+        System.out.println("Nhập tên lớp cần tìm");
+        String find = sc.nextLine();
+        classMng.showClassByName(find);
     }
 
     private static void showStudentMenu() {
