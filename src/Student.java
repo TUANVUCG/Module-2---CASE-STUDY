@@ -98,7 +98,6 @@ public class Student extends Person {
             System.err.println("Mã sinh viên không đúng");
         }
 
-
         System.out.print("Nhập email (ví dụ : abc@abc.abc) : ");
         while (true) {
             email = sc.nextLine();
