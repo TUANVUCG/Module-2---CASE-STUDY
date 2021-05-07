@@ -297,5 +297,4 @@ public class Main {
         System.out.println("Thông minh đấy, ta bắt đầu thôi nào. LẸT GÂU !!! ");
         System.out.println("=========oOo=========");
     }
-
 }
