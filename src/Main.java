@@ -27,16 +27,16 @@ public class Main {
                     String findTeacher = sc.nextLine();
                     classMng.showTeacherByNameOrId(findTeacher);
                     break;
-                case "4":
+                case "3":
                     System.out.println("Nhập tên, mã SV, sđt hoặc email cần tìm : ");
                     String findStu = sc.nextLine();
                     classMng.showStudentByNameOrIdOrPhoneOrEmail(findStu);
                     break;
-                case "7":
+                case "4":
                     classMng.sortStudentByGPA();
                     classMng.showClassInfo();
                     break;
-                case "8":
+                case "5":
                     showFirstMenu(classMng);
                     break;
                 case "0":
@@ -115,11 +115,12 @@ public class Main {
                     classMng.showClassInfo();
                     break;
                 case "3":
-                    System.out.println("Nhập tên lớp");
+                    System.out.println("Nhập tên lớp cần tìm");
                     String find = sc.nextLine();
                     classMng.showClassByName(find);
                     break;
                 case "4":
+                    classMng.showClassInfo();
                     System.out.println("Nhập tên lớp cần sửa");
                     String edit = sc.nextLine();
                     classMng.editClassByName(edit);
@@ -228,7 +229,6 @@ public class Main {
         choice();
         String choice = sc.nextLine();
         do {
-
             if(choice.equals("1")){
                 login("student","student");
                 workLikeAStudent(classMng);

@@ -89,29 +89,28 @@ public class Classroom implements Serializable {
     }
 
     public void showClassInfo() {
-        System.out.println("Tên lớp : " + className);
-        System.out.println("-------------------");
-        System.out.println();
+        System.out.println("TÊN LỚP : " + className);
+        System.out.println("-----------------");
 
 
-        System.out.println("Thông tin giảng viên ");
+        System.out.println("THÔNG TIN GIẢNG VIÊN ");
         System.out.printf("%-25s%-18s%-20s%-17s%-25s%-28s%-21s%-19s","Họ tên","Giới tính","Ngày sinh","Quê quán",
                 "Mã giảng viên","Lương/giờ","Số giờ dạy","Thực lĩnh");
         System.out.println();
         teacher.showTeacherInfo();
-        System.out.println("-------------------");
-        System.out.println();
+        System.out.println("-----------------");
 
 
 
-        System.out.println("Thông tin sinh viên : ");
+        System.out.println("THÔNG TIN SINH VIÊN : ");
         System.out.printf("%-25s%-18s%-20s%-17s%-35s%-22s%-25s%-27s%-29s%-25s","Họ tên","Giới tính","Ngày sinh","Quê quán",
                 "Mã sinh viên","Email","Số điện thoại","Điểm lý thuyết","Điểm thực hành","Điểm trung bình");
         System.out.println();
         for (int i = 0; i < studentList.size(); i++) {
             System.out.println(studentList.get(i));
         }
-        System.out.println("-------------------");
+        System.out.println("===================================================================================");
+        System.out.println();
     }
 
     @Override
