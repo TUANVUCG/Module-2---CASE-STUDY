@@ -57,33 +57,40 @@ public class Person implements Serializable {
         System.out.print("Nhập tên : ");
         name = sc.nextLine();
 
-        System.out.print("Nhập giới tính (Nam/nữ) : ");
+        System.out.println("Nhập giới tính : ");
+        System.out.println("1. Nam");
+        System.out.println("2. Nữ");
         while (true) {
-            gender = sc.nextLine();
-            if (gender.equalsIgnoreCase("nam") || gender.equalsIgnoreCase("nữ")) {
+            String choose = sc.nextLine();
+            if (choose.equals("1")) {
+                gender = "Nam";
+                break;
+            } else if (choose.equals("2")) {
+                gender = "Nữ";
                 break;
             } else {
-                System.err.println("Giới tính chỉ có thể là nam hoặc nữ");
+                System.err.println("Nhập sai !");
             }
         }
-
 
         System.out.print("Nhập ngày sinh (dd/MM/yyyy): ");
-        while (true) {
-            birthOfDate = sc.nextLine();
-            String regex = "^\\d{2}/\\d{2}/\\d{4}$";
-            Pattern pattern = Pattern.compile(regex);
-            Matcher matcher = pattern.matcher(birthOfDate);
-            if (matcher.find()) {
-                break;
-            } else {
-                System.err.println("Nhập ngày sinh theo mẫu dd/MM/yyyy !!!");
-            }
+        while(true)
+
+    {
+        birthOfDate = sc.nextLine();
+        String regex = "^\\d{2}/\\d{2}/\\d{4}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(birthOfDate);
+        if (matcher.find()) {
+            break;
+        } else {
+            System.err.println("Nhập ngày sinh theo mẫu dd/MM/yyyy !!!");
         }
+    }
 
         System.out.print("Nhập địa chỉ : ");
-        address = sc.nextLine();
-    }
+    address =sc.nextLine();
+}
 
     public void showPersonInfo() {
         System.out.println(toString());
@@ -91,6 +98,6 @@ public class Person implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("%-30s%-12s%-20s%-20s",name,gender,birthOfDate,address);
+        return String.format("%-30s%-12s%-20s%-20s", name, gender, birthOfDate, address);
     }
 }

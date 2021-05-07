@@ -101,6 +101,7 @@ public class ClassMng {
     // Giảng viên
     // Tìm kiếm giảng viên bằng tên hoặc mã giảng viên
     public int findTeacherByNameOrId(String input) {
+        readClassInfo();
         int index = -1;
         for (int i = 0; i < classroomList.size(); i++) {
             Teacher teacher = classroomList.get(i).getTeacher();
@@ -109,7 +110,7 @@ public class ClassMng {
             }
         }
         if (index == -1) {
-            System.err.println("Không tìm thấy giáo viên phù hợp !!!");
+            System.err.println("Không tìm thấy giảng viên phù hợp !!!");
         }
         return index;
     }
@@ -118,6 +119,9 @@ public class ClassMng {
     public void showTeacherByNameOrId(String input) {
         int index = findTeacherByNameOrId(input);
         if (index != -1) {
+            System.out.printf("%-25s%-18s%-20s%-17s%-25s%-28s%-21s%-19s","Họ tên","Giới tính","Ngày sinh","Quê quán",
+                    "Mã giảng viên","Lương/giờ","Số giờ dạy","Thực lĩnh");
+            System.out.println();
             classroomList.get(index).getTeacher().showTeacherInfo();
         }
     }
@@ -137,6 +141,7 @@ public class ClassMng {
 
     // Thêm sinh viên vào lớp
     public void addStudent(String className){
+        readClassInfo();
         boolean isFind = false;
         for(Classroom classroom : classroomList){
             if(classroom.getClassName().equalsIgnoreCase(className)){
@@ -157,13 +162,13 @@ public class ClassMng {
         for (int i = 0; i < classroomList.size(); i++) {
             for (int j = 0; j < classroomList.get(i).getStudentList().size(); j++) {
                 Student student = classroomList.get(i).getStudentList().get(j);
-                if (student.getStudentId().equalsIgnoreCase(input) || student.getName().equalsIgnoreCase(input) || student.getPhoneNumber().equals(input) || student.getEmail().equalsIgnoreCase(input)) {
+                if (findStudentByInput(input, student)){
                     pos[0] = i;
                     pos[1] = j;
                 }
             }
         }
-        if (pos[0] == -1 || pos[1] == -1) {
+        if (pos[0] == -1) {
             System.err.println("Không tìm thấy sinh viên phù hợp");
         }
         return pos;
@@ -171,21 +176,26 @@ public class ClassMng {
 
     // Hiển thị thông tin sinh viên bằng tên hoặc mã sinh viên, sđt, email
     public void showStudentByNameOrIdOrPhoneOrEmail(String input) {
+        readClassInfo();
         int[] pos = findStudent(input);
         if (pos[0] != -1 && pos[1] != -1) {
             Student student = classroomList.get(pos[0]).getStudentList().get(pos[1]);
-            if (student.getName().equalsIgnoreCase(input) || student.getStudentId().equalsIgnoreCase(input) || student.getPhoneNumber().equalsIgnoreCase(input) || student.getEmail().equalsIgnoreCase(input)) {
+            if (findStudentByInput(input, student)) {
+                System.out.printf("%-25s%-18s%-20s%-17s%-35s%-22s%-25s%-27s%-29s%-25s","Họ tên","Giới tính","Ngày sinh","Quê quán",
+                        "Mã sinh viên","Email","Số điện thoại","Điểm lý thuyết","Điểm thực hành","Điểm trung bình");
+                System.out.println();
                 student.showStudentInfo();
             }
         }
     }
-
     // Sửa thông tin sinh viên bằng tên hoặc mã sinh viên, sđt, email
     public void editStudentByNameOrIdOrPhoneOrEmail(String input) {
+        readClassInfo();
+        showClassInfo();
         int[] pos = findStudent(input);
         if (pos[0] != -1 && pos[1] != -1) {
             Student student = classroomList.get(pos[0]).getStudentList().get(pos[1]);
-            if (student.getName().equalsIgnoreCase(input) || student.getStudentId().equalsIgnoreCase(input) || student.getPhoneNumber().equalsIgnoreCase(input) || student.getEmail().equalsIgnoreCase(input)) {
+            if (findStudentByInput(input, student)) {
                 Student s = new Student();
                 s.inputStudentInfo(classroomList);
                 classroomList.get(pos[0]).getStudentList().set(pos[1], s);
@@ -194,12 +204,17 @@ public class ClassMng {
         saveClassInfo();
     }
 
+    private boolean findStudentByInput(String input, Student student) {
+        return student.getName().equalsIgnoreCase(input) || student.getStudentId().equalsIgnoreCase(input) || student.getPhoneNumber().equalsIgnoreCase(input) || student.getEmail().equalsIgnoreCase(input);
+    }
+
     // Xóa sinh viên bằng tên hoặc mã sinh viên, sđt, email
     public void removeStudentByNameOrIdOrPhoneOrEmail(String input) {
+        readClassInfo();
         int[] pos = findStudent(input);
         if (pos[0] != -1 && pos[1] != -1) {
             Student student = classroomList.get(pos[0]).getStudentList().get(pos[1]);
-            if (student.getName().equalsIgnoreCase(input) || student.getStudentId().equalsIgnoreCase(input) || student.getPhoneNumber().equalsIgnoreCase(input) || student.getEmail().equalsIgnoreCase(input)) {
+            if (findStudentByInput(input,student)) {
                 classroomList.get(pos[0]).getStudentList().remove(pos[1]);
             }
         }
@@ -209,11 +224,12 @@ public class ClassMng {
     // Lấy ra sinh viên điểm cao nhất lớp và thấp nhất lớp
     // Sắp xếp sinh viên theo điểm từ cao xuống thấp
     public void sortStudentByGPA() {
+        readClassInfo();
         for (Classroom classroom : classroomList) {
             Collections.sort(classroom.getStudentList(), new Comparator<Student>() {
                 @Override
                 public int compare(Student o1, Student o2) {
-                    if (o1.findGPA() > o2.findGPA()) {
+                    if (o1.findGPA() < o2.findGPA()) {
                         return 1;
                     }
                     return -1;
@@ -225,13 +241,14 @@ public class ClassMng {
 
     // Hiển thị sinh viên điểm cao nhất và thấp nhất lớp
     public void showMaxAndMixGPA(String className) {
+        readClassInfo();
         sortStudentByGPA();
         boolean isFind = false;
         for (Classroom classroom : classroomList) {
             if (classroom.getClassName().equalsIgnoreCase(className)) {
-                System.out.println("Sinh viên có điểm cao nhất : ");
-                classroom.getStudentList().get(0).showStudentInfo();
                 System.out.println("Sinh viên có điểm thấp nhất : ");
+                classroom.getStudentList().get(0).showStudentInfo();
+                System.out.println("Sinh viên có điểm cao nhất : ");
                 classroom.getStudentList().get(classroom.getStudentList().size() - 1).showStudentInfo();
                 isFind = true;
             }
