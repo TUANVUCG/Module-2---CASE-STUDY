@@ -169,7 +169,6 @@ public class Student extends Person {
         }
     }
 
-
     public void showStudentInfo() {
         System.out.println(this.toString());
     }
