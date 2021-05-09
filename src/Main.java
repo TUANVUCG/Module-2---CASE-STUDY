@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -160,13 +158,13 @@ public class Main {
     private static void findStudent(ClassMng classMng) {
         System.out.println("Nhập tên, mã SV, sđt hoặc email cần tìm : ");
         String findStu = sc.nextLine();
-        classMng.showStudentByNameOrIdOrPhoneOrEmail(findStu);
+        classMng.showStudent(findStu);
     }
 
     private static void showStudentList(ClassMng classMng) {
         System.out.println("Nhập tên lớp :");
         String name = sc.nextLine();
-        classMng.showStudentListByClassName(name);
+        classMng.showStudentList(name);
     }
 
     private static void sortStudentByGpa(ClassMng classMng) {
@@ -177,8 +175,8 @@ public class Main {
     private static void editStudent(ClassMng classMng) {
         System.out.println("Nhập tên, mã SV, sđt hoặc email cần sửa : ");
         String editStu = sc.nextLine();
-        classMng.showStudentByNameOrIdOrPhoneOrEmail(editStu);
-        classMng.editStudentByNameOrIdOrPhoneOrEmail(editStu);
+        classMng.showStudent(editStu);
+        classMng.editStudent(editStu);
     }
 
     private static void addStudent(ClassMng classMng) {
@@ -192,48 +190,48 @@ public class Main {
         classMng.showClassInfo();
         System.out.println("Nhập tên hoặc mã giảng viên cần tìm ");
         String findTeacher = sc.nextLine();
-        classMng.showTeacherByNameOrId(findTeacher);
+        classMng.showTeacher(findTeacher);
     }
 
     private static void removeStudent(ClassMng classMng) {
         System.out.println("Nhập tên, mã SV, sđt hoặc email cần xóa : ");
         String removeStu = sc.nextLine();
-        classMng.removeStudentByNameOrIdOrPhoneOrEmail(removeStu);
+        classMng.removeStudent(removeStu);
     }
 
     private static void removeTeacher(ClassMng classMng) {
         System.out.println("Nhập tên hoặc mã giảng viên cần sửa ");
         String editTeacher = sc.nextLine();
-        classMng.editTeacherByNameOrId(editTeacher);
+        classMng.editTeacher(editTeacher);
     }
 
     private static void readClass(ClassMng classMng) {
-        classMng.readClassInfo();
+        classMng.read();
         classMng.showClassInfo();
     }
 
     private static void saveClass(ClassMng classMng) {
-        classMng.saveClassInfo();
+        classMng.save();
         System.out.println("Đã lưu !");
     }
 
     private static void removeClass(ClassMng classMng) {
         System.out.println("Nhập tên lớp cần xóa");
         String remove = sc.nextLine();
-        classMng.editClassByName(remove);
+        classMng.editClass(remove);
     }
 
     private static void editClass(ClassMng classMng) {
         classMng.showClassInfo();
         System.out.println("Nhập tên lớp cần sửa");
         String edit = sc.nextLine();
-        classMng.editClassByName(edit);
+        classMng.editClass(edit);
     }
 
     private static void findClass(ClassMng classMng) {
         System.out.println("Nhập tên lớp cần tìm");
         String find = sc.nextLine();
-        classMng.showClassByName(find);
+        classMng.showClass(find);
     }
 
     private static void showStudentMenu() {
