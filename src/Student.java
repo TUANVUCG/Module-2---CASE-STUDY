@@ -3,7 +3,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Student extends Person implements Teacher_Student{
+public class Student extends Person implements MyInterface {
     private String studentId;
     private String email;
     private String phoneNumber;

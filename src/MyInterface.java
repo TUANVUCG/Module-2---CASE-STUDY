@@ -1,6 +1,6 @@
 import java.util.List;
 
-public interface Teacher_Student {
+public interface MyInterface {
 
     void inputInfo(List<Classroom> classroomList);
 

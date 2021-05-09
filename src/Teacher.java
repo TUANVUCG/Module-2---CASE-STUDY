@@ -3,7 +3,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Teacher extends Person implements Teacher_Student{
+public class Teacher extends Person implements MyInterface {
     private double salaryOneHour;
     private double hourOnMonth;
     private String teacherId;

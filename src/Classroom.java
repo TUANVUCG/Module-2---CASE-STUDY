@@ -5,7 +5,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Classroom implements Serializable, Teacher_Student{
+public class Classroom implements Serializable, MyInterface {
 
     private String className;
     private Teacher teacher = new Teacher();
