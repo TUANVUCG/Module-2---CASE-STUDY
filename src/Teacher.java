@@ -96,6 +96,5 @@ public class Teacher extends Person implements Teacher_Student{
     @Override
     public String toString() {
         return super.toString() + String.format("%-20s%-15.1f%19.1f%20.1f",teacherId,salaryOneHour,hourOnMonth,findSalary());
-
     }
 }

@@ -9,7 +9,7 @@ public class ClassMng {
     public void addClass() {
         read();
         Classroom classroom = new Classroom();
-        classroom.inputClassInfo(classroomList);
+        classroom.inputInfo(classroomList);
         classroomList.add(classroom);
         save();
     }
@@ -18,10 +18,9 @@ public class ClassMng {
     public void showClassInfo() {
         read();
         for (Classroom classroom : classroomList) {
-            classroom.showClassInfo();
+            classroom.showInfo();
         }
     }
-
 
     // Tìm thông tin lớp học bằng tên lớp
     public int findClass(String name) {
@@ -41,7 +40,7 @@ public class ClassMng {
     public void showClass(String name) {
         int index = findClass(name);
         if (index != -1) {
-            classroomList.get(index).showClassInfo();
+            classroomList.get(index).showInfo();
         }
     }
 
@@ -50,7 +49,7 @@ public class ClassMng {
         int index = findClass(name);
         if (index != -1) {
             Classroom classroom = new Classroom();
-            classroom.inputClassInfo(classroomList);
+            classroom.inputInfo(classroomList);
             classroomList.set(index, classroom);
         }
         save();
@@ -271,7 +270,6 @@ public class ClassMng {
         save();
     }
 
-
     // Lấy ra sinh viên điểm cao nhất lớp và thấp nhất lớp
     // Sắp xếp sinh viên theo điểm từ cao xuống thấp
     public void sortStudentByGPA() {
@@ -303,7 +301,6 @@ public class ClassMng {
             System.out.println("===============================================");
         }
     }
-
 
     // Hiển thị danh sách sinh viên bằng cách nhập tên lớp
     public void showStudentList(String name){

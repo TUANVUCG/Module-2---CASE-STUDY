@@ -5,7 +5,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Classroom implements Serializable {
+public class Classroom implements Serializable, Teacher_Student{
 
     private String className;
     private Teacher teacher = new Teacher();
@@ -44,8 +44,8 @@ public class Classroom implements Serializable {
         this.studentList = studentList;
     }
 
-
-    public void inputClassInfo(List<Classroom> classroomList) {
+    @Override
+    public void inputInfo(List<Classroom> classroomList) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhập tên lớp ( ví dụ : VU1234 ) ");
         while (true) {
@@ -85,7 +85,8 @@ public class Classroom implements Serializable {
         }
     }
 
-    public void showClassInfo() {
+    @Override
+    public void showInfo() {
         System.out.println("TÊN LỚP : " + className);
         System.out.println("-----------------");
 
@@ -110,12 +111,4 @@ public class Classroom implements Serializable {
         System.out.println();
     }
 
-    @Override
-    public String toString() {
-        return "Classroom{" +
-                "className='" + className + '\'' +
-                ", teacher=" + teacher +
-                ", studentList=" + studentList +
-                '}';
-    }
 }
