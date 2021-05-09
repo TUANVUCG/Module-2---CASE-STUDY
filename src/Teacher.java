@@ -3,7 +3,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Teacher extends Person{
+public class Teacher extends Person implements Teacher_Student{
     private double salaryOneHour;
     private double hourOnMonth;
     private String teacherId;
@@ -48,7 +48,8 @@ public class Teacher extends Person{
         this.teacherId = teacherId;
     }
 
-    public void inputTeacherInfo(List<Classroom> classroomList) {
+    @Override
+    public void inputInfo(List<Classroom> classroomList) {
         super.inputPersonInfo();
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhập mã giảng viên (ví dụ TC1234) : ");
@@ -87,7 +88,8 @@ public class Teacher extends Person{
         return salaryOneHour * hourOnMonth;
     }
 
-    public void showTeacherInfo() {
+    @Override
+    public void showInfo() {
         System.out.println(toString());
     }
 

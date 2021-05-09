@@ -137,7 +137,7 @@ public class ClassMng {
             System.out.printf("%-25s%-18s%-20s%-17s%-25s%-28s%-21s%-19s", "Họ tên", "Giới tính", "Ngày sinh", "Quê quán",
                     "Mã giảng viên", "Lương/giờ", "Số giờ dạy", "Thực lĩnh");
             System.out.println();
-            classroomList.get(index).getTeacher().showTeacherInfo();
+            classroomList.get(index).getTeacher().showInfo();
         }
     }
 
@@ -146,7 +146,7 @@ public class ClassMng {
         int index = findTeacherByNameOrId(input);
         if (index != -1) {
             Teacher teacher = new Teacher();
-            teacher.inputTeacherInfo(classroomList);
+            teacher.inputInfo(classroomList);
             classroomList.get(index).setTeacher(teacher);
         }
         saveClassInfo();
@@ -160,7 +160,7 @@ public class ClassMng {
         for (Classroom classroom : classroomList) {
             if (classroom.getClassName().equalsIgnoreCase(className)) {
                 Student student = new Student();
-                student.inputStudentInfo(classroomList);
+                student.inputInfo(classroomList);
                 classroom.getStudentList().add(student);
                 isFind = true;
             }
@@ -198,7 +198,7 @@ public class ClassMng {
             if (findStudentByInput(input, student)) {
                 showStudentTitle();
                 System.out.println();
-                student.showStudentInfo();
+                student.showInfo();
             }
         }
     }
@@ -211,7 +211,7 @@ public class ClassMng {
             Student student = classroomList.get(pos[0]).getStudentList().get(pos[1]);
             if (findStudentByInput(input, student)) {
                 Student s = new Student();
-                s.inputStudentInfo(classroomList);
+                s.inputInfo(classroomList);
                 classroomList.get(pos[0]).getStudentList().set(pos[1], s);
             }
         }
@@ -298,7 +298,7 @@ public class ClassMng {
             System.out.println("----------------");
             showStudentTitle();
             for(Student student : classroom.getStudentList()){
-                student.showStudentInfo();
+                student.showInfo();
             }
             System.out.println("===============================================");
         }
@@ -315,7 +315,7 @@ public class ClassMng {
                 System.out.println("----------------");
                 showStudentTitle();
                 for(Student student : classroom.getStudentList()){
-                    student.showStudentInfo();
+                    student.showInfo();
                     isFind = true;
                 }
             }
@@ -334,7 +334,7 @@ public class ClassMng {
                     System.out.println("TÊN LỚP : "+ classroom.getClassName());
                     System.out.println("--------------------");
                     showStudentTitle();
-                    student.showStudentInfo();
+                    student.showInfo();
                 }
             }
         }
@@ -356,9 +356,9 @@ public class ClassMng {
         for (Classroom classroom : classroomList) {
             if (classroom.getClassName().equalsIgnoreCase(className)) {
                 System.out.println("Sinh viên có điểm thấp nhất : ");
-                classroom.getStudentList().get(0).showStudentInfo();
+                classroom.getStudentList().get(0).showInfo();
                 System.out.println("Sinh viên có điểm cao nhất : ");
-                classroom.getStudentList().get(classroom.getStudentList().size() - 1).showStudentInfo();
+                classroom.getStudentList().get(classroom.getStudentList().size() - 1).showInfo();
                 isFind = true;
             }
         }

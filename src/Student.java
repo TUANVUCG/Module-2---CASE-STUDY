@@ -3,7 +3,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Student extends Person {
+public class Student extends Person implements Teacher_Student{
     private String studentId;
     private String email;
     private String phoneNumber;
@@ -70,7 +70,8 @@ public class Student extends Person {
         this.practiceMark = practiceMark;
     }
 
-    public void inputStudentInfo(List<Classroom> classroomList) {
+    @Override
+    public void inputInfo(List<Classroom> classroomList) {
         super.inputPersonInfo();
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhập mã sinh viên (ví dụ CG1234) : ");
@@ -169,7 +170,8 @@ public class Student extends Person {
         }
     }
 
-    public void showStudentInfo() {
+    @Override
+    public void showInfo() {
         System.out.println(this.toString());
     }
 

@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         ClassMng classMng = new ClassMng();
 
-        testIQ();
+//        testIQ();
 
         showFirstMenu(classMng);
     }

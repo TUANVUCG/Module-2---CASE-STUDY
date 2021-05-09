@@ -1,6 +1,3 @@
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
-
-import java.awt.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -75,7 +72,7 @@ public class Classroom implements Serializable {
         }
 
         System.out.println("Nhập thông tin giảng viên : ");
-        teacher.inputTeacherInfo(classroomList);
+        teacher.inputInfo(classroomList);
 
         System.out.println("Nhập thông tin sinh viên :  ");
         System.out.println("Nhập số sinh viên trong lớp : ");
@@ -83,7 +80,7 @@ public class Classroom implements Serializable {
         for (int i = 0; i < number; i++) {
             System.out.println("Nhập thông tin sinh viên thứ " + (i+1) + " ");
             Student stu = new Student();
-            stu.inputStudentInfo(classroomList);
+            stu.inputInfo(classroomList);
             studentList.add(stu);
         }
     }
@@ -97,7 +94,7 @@ public class Classroom implements Serializable {
         System.out.printf("%-25s%-18s%-20s%-17s%-25s%-28s%-21s%-19s","Họ tên","Giới tính","Ngày sinh","Quê quán",
                 "Mã giảng viên","Lương/giờ","Số giờ dạy","Thực lĩnh");
         System.out.println();
-        teacher.showTeacherInfo();
+        teacher.showInfo();
         System.out.println("-----------------");
 
 
