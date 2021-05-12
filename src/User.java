@@ -44,28 +44,40 @@ public class User implements Serializable {
 
     public void inputInfo(List<User> userList) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Bạn là ai trong cuộc đời này : ");
-        System.out.println("1. Sinh viên quèn\n" +
-                "2. Giảng viên\n" +
-                "3. I'm Trùm");
-        String choose;
-        do {
-            choose = sc.nextLine();
-            switch (choose) {
-                case "1":
-                    role = "student";
-                    break;
-                case "2":
-                    role = "teacher";
-                    break;
-                case "3":
-                    role = "boss";
-                    break;
-                default:
-                    System.err.println("Nhập sai !");
-            }
-        } while (!(choose.equals("1")) && !(choose.equals("2")) && !(choose.equals("3")));
+        inputRole(sc);
 
+        inputAcc(userList, sc);
+
+        inputPass(userList, sc);
+    }
+
+    private void inputPass(List<User> userList, Scanner sc) {
+        System.out.println("Mật khẩu phải trên 5 kí tự, không chứ kí tự đặc biệt");
+        System.out.print("Nhập mật khẩu : ");
+        while (true) {
+            pass = sc.nextLine();
+            String regex = "^\\w{5,}$";
+            Pattern pattern = Pattern.compile(regex);
+            Matcher matcher = pattern.matcher(pass);
+            if (matcher.find()) {
+                System.out.println("Xác nhận mật khẩu");
+                boolean isConfirm = false;
+                do {
+                    String confirm = sc.nextLine();
+                    if(pass.equals(confirm)){
+                        isConfirm = true;
+                    }
+                    else {
+                        System.err.println("Không khớp, mời xác nhận lại !");
+                    }
+                }while (!isConfirm);
+                break;
+            }
+            System.err.println("Mật khẩu không đúng");
+        }
+    }
+
+    private void inputAcc(List<User> userList, Scanner sc) {
         System.out.print("Nhập tài khoản : ");
         System.out.println("Tài khoản phải trên 5 kí tự, không chứ kí tự đặc biệt");
         while (true) {
@@ -90,33 +102,30 @@ public class User implements Serializable {
             }
             System.err.println("Tài khoản không đúng");
         }
+    }
 
-
-
-        System.out.println("Mật khẩu phải trên 5 kí tự, không chứ kí tự đặc biệt");
-        System.out.print("Nhập mật khẩu : ");
-        while (true) {
-            pass = sc.nextLine();
-            boolean isFind = false;
-            for (User user : userList) {
-                if (user.getPass().equals(pass)) {
-                    isFind = true;
+    private void inputRole(Scanner sc) {
+        System.out.println("Bạn là ai trong cuộc đời này : ");
+        System.out.println("1. Sinh viên quèn\n" +
+                "2. Giảng viên\n" +
+                "3. I'm Trùm");
+        String choose;
+        do {
+            choose = sc.nextLine();
+            switch (choose) {
+                case "1":
+                    role = "student";
                     break;
-                }
-            }
-            String regex = "^\\w{5,}$";
-            Pattern pattern = Pattern.compile(regex);
-            Matcher matcher = pattern.matcher(pass);
-            if (matcher.find()) {
-                if (!isFind)
+                case "2":
+                    role = "teacher";
                     break;
-                else {
-                    System.err.println("Mật khẩu đã tồn tại !");
-                    continue;
-                }
+                case "3":
+                    role = "boss";
+                    break;
+                default:
+                    System.err.println("Nhập sai !");
             }
-            System.err.println("Mật khẩu không đúng");
-        }
+        } while (!(choose.equals("1")) && !(choose.equals("2")) && !(choose.equals("3")));
     }
 }
 

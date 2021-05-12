@@ -20,19 +20,19 @@ public class Main {
         String role = userMng.login();
         switch (role) {
             case "student":
-                workLikeAStudent(classMng);
+                workLikeAStudent(classMng,userMng);
                 break;
             case "teacher":
-                workLikeATeacher(classMng);
+                workLikeATeacher(classMng,userMng);
                 break;
             case "boss":
-                workLikeABoss(classMng);
+                workLikeABoss(classMng,userMng);
                 break;
         }
     }
 
 
-    private static void workLikeAStudent(ClassMng classMng) {
+    private static void workLikeAStudent(ClassMng classMng, UserMng userMng) {
         String choose;
         do {
             showStudentMenu();
@@ -53,9 +53,8 @@ public class Main {
                 case "5":
                     sortStudentByGpa(classMng);
                     break;
-//                case "6":
-//                    showFirstMenu(classMng);
-//                    break;
+                case "6":
+                    bigMenu(classMng,userMng);
                 case "0":
                     System.out.println("GOODBYE !!!");
                     System.exit(0);
@@ -68,7 +67,7 @@ public class Main {
 
     }
 
-    private static void workLikeATeacher(ClassMng classMng) {
+    private static void workLikeATeacher(ClassMng classMng,UserMng userMng) {
         String choose;
         do {
             showTeacherMenu();
@@ -98,9 +97,9 @@ public class Main {
                 case "8":
                     classMng.showStudentHasScholarShip();
                     break;
-//                case "9":
-//                    showFirstMenu(classMng);
-//                    break;
+                case "9":
+                    bigMenu(classMng,userMng);
+                    break;
                 case "0":
                     System.out.println("GOODBYE !!!");
                     System.exit(0);
@@ -112,7 +111,7 @@ public class Main {
         } while (true);
     }
 
-    private static void workLikeABoss(ClassMng classMng) {
+    private static void workLikeABoss(ClassMng classMng,UserMng userMng) {
         String choose;
         do {
             showBossMenu();
@@ -163,9 +162,9 @@ public class Main {
                 case "15":
                     classMng.showStudentHasScholarShip();
                     break;
-//                case "16":
-//                    showFirstMenu(classMng);
-//                    break;
+                case "16":
+                    bigMenu(classMng,userMng);
+                    break;
                 case "0":
                     System.out.println("GOODBYE !!!");
                     System.exit(0);
@@ -262,7 +261,7 @@ public class Main {
         System.out.println("3. Hiển thị danh sách sinh viên đạt học bổng");
         System.out.println("4. Tìm sinh viên");
         System.out.println("5. Sắp xếp sinh viên theo điểm từ cao đến thấp");
-//        System.out.println("6. Quay lại menu chính ");
+        System.out.println("6. Quay lại menu chính ");
         System.out.println("0. Thoát chương trình");
     }
 
@@ -275,7 +274,7 @@ public class Main {
         System.out.println("6. Xóa thông tin sinh viên");
         System.out.println("7. Sắp xếp sinh viên theo điểm từ cao đến thấp");
         System.out.println("8. Hiển thị danh sách sinh viên đạt học bổng ");
-//        System.out.println("9. Quay lại menu chính ");
+        System.out.println("9. Quay lại menu chính ");
         System.out.println("0. Thoát chương trình");
     }
 
@@ -295,7 +294,7 @@ public class Main {
         System.out.println("13. Xóa thông tin sinh viên");
         System.out.println("14. Sắp xếp sinh viên theo điểm từ thấp đến cao");
         System.out.println("15. Hiển thị danh sách sinh viên đạt học bổng ");
-//        System.out.println("16. Quay lại menu chính ");
+        System.out.println("16. Quay lại menu chính ");
         System.out.println("0. Thoát chương trình");
     }
 

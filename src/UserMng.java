@@ -8,6 +8,7 @@ public class UserMng {
     Scanner sc = new Scanner(System.in);
     List<User> userList = new ArrayList<>();
 
+    // Đăng kí
     public void registration() {
         try {
             read();
@@ -69,7 +70,10 @@ public class UserMng {
         return role;
     }
 
+    // Đổi mật khẩu
 
+
+    // Lưu
     public void save() {
         FileOutputStream fos = null;
         ObjectOutputStream oos = null;
@@ -98,6 +102,7 @@ public class UserMng {
         }
     }
 
+    // Đọc
     public void read() {
         FileInputStream fis = null;
         ObjectInputStream ois = null;
