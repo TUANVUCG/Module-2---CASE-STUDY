@@ -36,11 +36,11 @@ public class UserMng {
             for (User user : userList) {
                 if (user.getAcc().equals(acc)) {
                     isAcc = true;
-                    role = user.getRole();
                     System.out.println("Nhập mật khẩu : ");
                     while (true) {
                         String pass = sc.nextLine();
                         if (user.getPass().equals(pass)) {
+                            role = user.getRole();
                             break;
                         }
                         System.out.println("Mật khẩu không đúng, mời nhập lại !");
