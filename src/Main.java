@@ -6,10 +6,31 @@ public class Main {
     public static void main(String[] args) {
         ClassMng classMng = new ClassMng();
 
-        testIQ();
+        UserMng userMng = new UserMng();
 
-        showFirstMenu(classMng);
+//        showFirstMenu(classMng);
+
+//        testIQ();
+
+        bigMenu(classMng, userMng);
     }
+
+    private static void bigMenu(ClassMng classMng, UserMng userMng) {
+        System.out.println("BẠN CẦN ĐĂNG NHẬP ĐỂ TRUY CẬP HỆ THỐNG !");
+        String role = userMng.login();
+        switch (role) {
+            case "student":
+                workLikeAStudent(classMng);
+                break;
+            case "teacher":
+                workLikeATeacher(classMng);
+                break;
+            case "boss":
+                workLikeABoss(classMng);
+                break;
+        }
+    }
+
 
     private static void workLikeAStudent(ClassMng classMng) {
         String choose;
@@ -32,9 +53,9 @@ public class Main {
                 case "5":
                     sortStudentByGpa(classMng);
                     break;
-                case "6":
-                    showFirstMenu(classMng);
-                    break;
+//                case "6":
+//                    showFirstMenu(classMng);
+//                    break;
                 case "0":
                     System.out.println("GOODBYE !!!");
                     System.exit(0);
@@ -44,6 +65,7 @@ public class Main {
                     break;
             }
         } while (true);
+
     }
 
     private static void workLikeATeacher(ClassMng classMng) {
@@ -76,9 +98,9 @@ public class Main {
                 case "8":
                     classMng.showStudentHasScholarShip();
                     break;
-                case "9":
-                    showFirstMenu(classMng);
-                    break;
+//                case "9":
+//                    showFirstMenu(classMng);
+//                    break;
                 case "0":
                     System.out.println("GOODBYE !!!");
                     System.exit(0);
@@ -141,9 +163,9 @@ public class Main {
                 case "15":
                     classMng.showStudentHasScholarShip();
                     break;
-                case "16":
-                    showFirstMenu(classMng);
-                    break;
+//                case "16":
+//                    showFirstMenu(classMng);
+//                    break;
                 case "0":
                     System.out.println("GOODBYE !!!");
                     System.exit(0);
@@ -240,7 +262,7 @@ public class Main {
         System.out.println("3. Hiển thị danh sách sinh viên đạt học bổng");
         System.out.println("4. Tìm sinh viên");
         System.out.println("5. Sắp xếp sinh viên theo điểm từ cao đến thấp");
-        System.out.println("6. Quay lại menu chính ");
+//        System.out.println("6. Quay lại menu chính ");
         System.out.println("0. Thoát chương trình");
     }
 
@@ -253,7 +275,7 @@ public class Main {
         System.out.println("6. Xóa thông tin sinh viên");
         System.out.println("7. Sắp xếp sinh viên theo điểm từ cao đến thấp");
         System.out.println("8. Hiển thị danh sách sinh viên đạt học bổng ");
-        System.out.println("9. Quay lại menu chính ");
+//        System.out.println("9. Quay lại menu chính ");
         System.out.println("0. Thoát chương trình");
     }
 
@@ -273,37 +295,10 @@ public class Main {
         System.out.println("13. Xóa thông tin sinh viên");
         System.out.println("14. Sắp xếp sinh viên theo điểm từ thấp đến cao");
         System.out.println("15. Hiển thị danh sách sinh viên đạt học bổng ");
-        System.out.println("16. Quay lại menu chính ");
+//        System.out.println("16. Quay lại menu chính ");
         System.out.println("0. Thoát chương trình");
     }
 
-    private static void showFirstMenu(ClassMng classMng) {
-        choice();
-        String choice = sc.nextLine();
-        do {
-            if(choice.equals("1")){
-                login("student","student");
-                workLikeAStudent(classMng);
-            }
-            if (choice.equals("2")) {
-                login("teacher","teacher");
-                workLikeATeacher(classMng);
-            }
-            if (choice.equals("3")) {
-                login("boss","boss");
-                workLikeABoss(classMng);
-            }
-            if (choice.equals("0")) {
-                System.out.println("GOODBYE !");
-                System.exit(0);
-                return;
-            }
-            if (!choice.equals("1") && !choice.equals("2")) {
-                System.err.println("Nhập sai !");
-                showFirstMenu(classMng);
-            }
-        } while (true);
-    }
 
     private static void login(String acc, String pass) {
         while (true) {
@@ -314,10 +309,10 @@ public class Main {
             }
             System.err.println("Tài khoản không chính xác ");
         }
-        while (true){
+        while (true) {
             System.out.println("Nhập mật khẩu");
             String inputPass = sc.nextLine();
-            if(inputPass.equals(pass)){
+            if (inputPass.equals(pass)) {
                 break;
             }
             System.err.println("Mật khẩu không chính xác ");
@@ -330,6 +325,7 @@ public class Main {
         System.out.println("2. Giảng viên");
         System.out.println("3. Trùm");
         System.out.println("0. Thoát chương trình ");
+
     }
 
     private static void testIQ() {

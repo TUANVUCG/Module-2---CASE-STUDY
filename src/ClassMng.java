@@ -1,17 +1,21 @@
 import java.io.*;
 import java.util.*;
 
-public class ClassMng {
+public class ClassMng implements Serializable{
     Scanner sc = new Scanner(System.in);
     List<Classroom> classroomList = new ArrayList<>();
 
     // Thêm lớp học
     public void addClass() {
-        read();
-        Classroom classroom = new Classroom();
-        classroom.inputInfo(classroomList);
-        classroomList.add(classroom);
-        save();
+        try{
+            read();
+            Classroom classroom = new Classroom();
+            classroom.inputInfo(classroomList);
+            classroomList.add(classroom);
+            save();
+        }catch (Exception e){
+            System.out.println("Hiện chưa có lớp nào trong danh sách !");
+        }
     }
 
     // Hiển thị thông tin lớp học

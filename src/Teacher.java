@@ -56,8 +56,8 @@ public class Teacher extends Person implements MyInterface {
         while (true) {
             teacherId = sc.nextLine();
             boolean isFind = false;
-            for (int i = 0 ; i < classroomList.size();i++) {
-                if (classroomList.get(i).getTeacher().getTeacherId().equalsIgnoreCase(teacherId)) {
+            for (Classroom classroom : classroomList) {
+                if (classroom.getTeacher().getTeacherId().equalsIgnoreCase(teacherId)) {
                     isFind = true;
                     break;
                 }
