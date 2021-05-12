@@ -91,6 +91,8 @@ public class User implements Serializable {
             System.err.println("Tài khoản không đúng");
         }
 
+
+
         System.out.println("Mật khẩu phải trên 5 kí tự, không chứ kí tự đặc biệt");
         System.out.print("Nhập mật khẩu : ");
         while (true) {
