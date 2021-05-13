@@ -8,8 +8,6 @@ public class Main {
 
         UserMng userMng = new UserMng();
 
-//        showFirstMenu(classMng);
-
 //        testIQ();
 
         bigMenu(classMng, userMng);
@@ -30,7 +28,6 @@ public class Main {
                 break;
         }
     }
-
 
     private static void workLikeAStudent(ClassMng classMng, UserMng userMng) {
         String choose;
@@ -299,7 +296,6 @@ public class Main {
         System.out.println("16. Quay lại menu chính ");
         System.out.println("0. Thoát chương trình");
     }
-
 
     private static void login(String acc, String pass) {
         while (true) {

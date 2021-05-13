@@ -2,7 +2,8 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.concurrent.ThreadPoolExecutor;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class UserMng {
     Scanner sc = new Scanner(System.in);
@@ -22,7 +23,6 @@ public class UserMng {
         }
     }
 
-
     // Đăng nhập
     public String login() {
         read();
@@ -41,6 +41,7 @@ public class UserMng {
                         String pass = sc.nextLine();
                         if (user.getPass().equals(pass)) {
                             role = user.getRole();
+                            exit = 0;
                             break;
                         }
                         System.out.println("Mật khẩu không đúng, mời nhập lại !");
@@ -57,7 +58,7 @@ public class UserMng {
                     case "1":
                         registration();
                         role = login();
-                        exit = 0;
+                        exit =0;
                         break;
                     case "2":
                         login();
@@ -66,12 +67,39 @@ public class UserMng {
                 }
             }
             if (isAcc) break;
-        } while (exit != 0);
+        } while (exit!=0);
         return role;
     }
 
     // Đổi mật khẩu
-
+    public void editPass(){
+        String role = login();
+        if(role!=null){
+            System.out.println("Nhập mật khẩu mới : ");
+            System.out.println("Mật khẩu phải trên 5 kí tự, không chứ kí tự đặc biệt");
+            while (true) {
+                String newPass = sc.nextLine();
+                String regex = "^\\w{5,}$";
+                Pattern pattern = Pattern.compile(regex);
+                Matcher matcher = pattern.matcher(newPass);
+                if (matcher.find()) {
+                    System.out.println("Xác nhận mật khẩu mới : ");
+                    boolean isConfirm = false;
+                    do {
+                        String confirm = sc.nextLine();
+                        if(newPass.equals(confirm)){
+                            isConfirm = true;
+                        }
+                        else {
+                            System.err.println("Không khớp, mời xác nhận lại !");
+                        }
+                    }while (!isConfirm);
+                    break;
+                }
+                System.err.println("Mật khẩu không đúng");
+            }
+        }
+    }
 
     // Lưu
     public void save() {
