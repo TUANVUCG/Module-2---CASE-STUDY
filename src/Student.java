@@ -3,7 +3,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Student extends Person implements MyInterface {
+public class Student extends Person implements ClassInterface {
     private String studentId;
     private String email;
     private String phoneNumber;
@@ -85,8 +85,7 @@ public class Student extends Person implements MyInterface {
                     }
                 }
             }
-            String regex = "^CG\\d{4}$";
-            Pattern pattern = Pattern.compile(regex);
+            Pattern pattern = Pattern.compile(STUDENT_ID_REGEX);
             Matcher matcher = pattern.matcher(studentId);
             if (matcher.find()) {
                 if (!idFind)
@@ -110,8 +109,7 @@ public class Student extends Person implements MyInterface {
                     }
                 }
             }
-            String regex = "^[a-zA-Z]+[a-zA-Z0-9]*@[a-z]+(\\.[a-zA-Z0-9]+)$";
-            Pattern pattern = Pattern.compile(regex);
+            Pattern pattern = Pattern.compile(STUDENT_EMAIL_REGEX);
             Matcher matcher = pattern.matcher(email);
             if (matcher.find()) {
                 if (!emailFind)
@@ -135,8 +133,7 @@ public class Student extends Person implements MyInterface {
                     }
                 }
             }
-            String regex = "^[(09)(03)]\\d{9,10}$";
-            Pattern pattern = Pattern.compile(regex);
+            Pattern pattern = Pattern.compile(STUDENT_PHONE_REGEX);
             Matcher matcher = pattern.matcher(phoneNumber);
             if (matcher.find()) {
                 if (!numFind)
@@ -172,7 +169,7 @@ public class Student extends Person implements MyInterface {
 
     @Override
     public void showInfo() {
-        System.out.println(this.toString());
+        System.out.println(this);
     }
 
     public double findGPA() {

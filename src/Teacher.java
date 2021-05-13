@@ -3,7 +3,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Teacher extends Person implements MyInterface {
+public class Teacher extends Person implements ClassInterface {
     private double salaryOneHour;
     private double hourOnMonth;
     private String teacherId;
@@ -62,8 +62,7 @@ public class Teacher extends Person implements MyInterface {
                     break;
                 }
             }
-            String regex = "^TC\\d{4}$";
-            Pattern pattern = Pattern.compile(regex);
+            Pattern pattern = Pattern.compile(TEACHER_ID_REGEX);
             Matcher matcher = pattern.matcher(teacherId);
             if (matcher.find()) {
                 if (!isFind)
@@ -90,7 +89,7 @@ public class Teacher extends Person implements MyInterface {
 
     @Override
     public void showInfo() {
-        System.out.println(toString());
+        System.out.println(this);
     }
 
     @Override

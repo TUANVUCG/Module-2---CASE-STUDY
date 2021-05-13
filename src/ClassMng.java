@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class ClassMng implements Serializable{
+public class ClassMng implements Serializable,Regex_FileName_String{
     Scanner sc = new Scanner(System.in);
     List<Classroom> classroomList = new ArrayList<>();
 
@@ -91,7 +91,7 @@ public class ClassMng implements Serializable{
         FileOutputStream fos = null;
         ObjectOutputStream oos = null;
         try {
-            fos = new FileOutputStream("Class.txt");
+            fos = new FileOutputStream(CLASS_FILE_NAME);
             oos = new ObjectOutputStream(fos);
             oos.writeObject(classroomList);
             oos.close();
@@ -106,7 +106,7 @@ public class ClassMng implements Serializable{
         FileInputStream fis = null;
         ObjectInputStream ois = null;
         try {
-            fis = new FileInputStream("Class.txt");
+            fis = new FileInputStream(CLASS_FILE_NAME);
             ois = new ObjectInputStream(fis);
             classroomList = (List<Classroom>) ois.readObject();
             ois.close();

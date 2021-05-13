@@ -5,7 +5,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Classroom implements Serializable, MyInterface {
+public class Classroom implements Serializable, ClassInterface , Regex_FileName_String{
 
     private String className;
     private Teacher teacher = new Teacher();
@@ -57,8 +57,7 @@ public class Classroom implements Serializable, MyInterface {
                     break;
                 }
             }
-            String regex = "^VU\\d{4}$";
-            Pattern pattern = Pattern.compile(regex);
+            Pattern pattern = Pattern.compile(CLASS_NAME_REGEX);
             Matcher matcher = pattern.matcher(className);
             if (matcher.find()) {
                 if (!isFind)

@@ -5,11 +5,12 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class UserMng {
+public class UserMng implements UserMngInterface,Regex_FileName_String{
     Scanner sc = new Scanner(System.in);
     List<User> userList = new ArrayList<>();
 
     // Đăng kí
+    @Override
     public void registration() {
         try {
             read();
@@ -24,6 +25,7 @@ public class UserMng {
     }
 
     // Đăng nhập
+    @Override
     public String login() {
         read();
         System.out.println("ĐĂNG NHẬP");
@@ -72,6 +74,7 @@ public class UserMng {
     }
 
     // Đổi mật khẩu
+    @Override
     public void editPass(){
         String role = login();
         if(role!=null){
@@ -102,10 +105,11 @@ public class UserMng {
     }
 
     // Lưu
+    @Override
     public void save() {
         FileOutputStream fos = null;
         ObjectOutputStream oos = null;
-        File file = new File("User.txt");
+        File file = new File(USER_FILE_NAME);
         try {
             fos = new FileOutputStream(file);
             oos = new ObjectOutputStream(fos);
@@ -131,11 +135,12 @@ public class UserMng {
     }
 
     // Đọc
+    @Override
     public void read() {
         FileInputStream fis = null;
         ObjectInputStream ois = null;
         try {
-            fis = new FileInputStream("User.txt");
+            fis = new FileInputStream(USER_FILE_NAME);
             ois = new ObjectInputStream(fis);
             userList = (List<User>) ois.readObject();
         } catch (IOException | ClassNotFoundException e) {

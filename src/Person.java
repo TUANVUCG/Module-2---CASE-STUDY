@@ -3,7 +3,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Person implements Serializable {
+public class Person implements Serializable , Regex_FileName_String{
 
     private String name;
     private String gender;
