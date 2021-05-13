@@ -1,14 +1,13 @@
 import java.util.Scanner;
 
 public class Main {
+
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
         ClassMng classMng = new ClassMng();
 
         UserMng userMng = new UserMng();
-
-//        testIQ();
 
         bigMenu(classMng, userMng);
     }

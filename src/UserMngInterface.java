@@ -1,5 +1,4 @@
 public interface UserMngInterface {
-
     void registration();
     String login();
     void editPass();

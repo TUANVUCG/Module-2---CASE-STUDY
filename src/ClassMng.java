@@ -137,11 +137,15 @@ public class ClassMng implements Serializable,Regex_FileName_String{
     public void showTeacher(String input) {
         int index = findTeacher(input);
         if (index != -1) {
-            System.out.printf("%-25s%-18s%-20s%-17s%-25s%-28s%-21s%-19s", "Họ tên", "Giới tính", "Ngày sinh", "Quê quán",
-                    "Mã giảng viên", "Lương/giờ", "Số giờ dạy", "Thực lĩnh");
+            showTeacherTitle();
             System.out.println();
             classroomList.get(index).getTeacher().showInfo();
         }
+    }
+
+    private void showTeacherTitle() {
+        System.out.printf("%-25s%-18s%-20s%-17s%-25s%-28s%-21s%-19s", "Họ tên", "Giới tính", "Ngày sinh", "Quê quán",
+                "Mã giảng viên", "Lương/giờ", "Số giờ dạy", "Thực lĩnh");
     }
 
     // Sửa thông tin giảng viên bằng tên hoặc mã giảng viên
